@@ -2,91 +2,133 @@
 
 ## Project Overview
 
-**Flight Router** is an application that enables users to find the shortest sequence of flights (with the fewest miles) between a specified start and destination airport. This is achieved using **Dijkstra's shortest path algorithm**, with airports represented as nodes and flights as edges in a graph. The app reads data from a user-specified local file and provides interactive features for route searching and dataset exploration.
+**Flight Router** is an application that enables users to find the shortest flight path (measured in miles) between two airports. This application leverages **Dijkstra's shortest path algorithm** and represents airports as nodes and flights as edges within a graph data structure. Users can load data from a local file and use the application to discover optimal routes, view dataset statistics, and interact with a command-line interface for seamless navigation.
 
 ---
 
 ## 📑 Key Features
 
-1. **Shortest Route Search**: Finds the shortest sequence of flights between two airports, displaying each flight segment with its distance in miles.
-2. **Dataset Statistics**: Displays statistics about the dataset, including the number of airports, flights, and the total miles of all flights in the dataset.
-3. **Interactive Interface**: Allows users to load a dataset, perform route searches, view statistics, and exit the app through a user-friendly command loop.
+1. **Shortest Route Search**: Finds the shortest sequence of flights between two specified airports, displaying each flight segment with its distance in miles.
+2. **Dataset Statistics**: Provides a summary of the dataset, including the number of airports, flights, and the cumulative mileage of all flights.
+3. **Interactive CLI**: Allows users to load datasets, perform route searches, view statistics, and exit the application in an interactive, user-friendly way.
 
 ---
 
 ## 🎯 Representative Tasks
 
-- **Route Search**: List all flights (with their distances in miles) for the shortest route from a starting airport (e.g., ATL) to a destination airport (e.g., SFO).
-- **Dataset Summary**: Show the total number of airports, flights, and cumulative miles in the dataset.
+- **Route Search**: Identify the shortest route from a starting airport (e.g., ATL) to a destination airport (e.g., SFO), displaying each flight and its distance.
+- **Dataset Summary**: Display the total number of airports, flights, and the cumulative mileage for all available routes in the dataset.
 
 ---
 
 ## 🛠 Project Structure and Roles
 
-### Backend Developer Role (My Role)
+### Backend Developer Role (Your Role)
 
-The **Backend Developer** is responsible for implementing the core functionalities of the application, specifically related to data handling, graph management, and shortest path computations.
+The **Backend Developer** is responsible for implementing the core functionalities of the application, specifically related to data handling, graph construction, and shortest path computations. 
 
 #### Responsibilities
 
-1. **Graph Data Handling**: Reads airport and flight data from a user-specified file and loads it into a graph data structure (using the `GraphADT` interface).
-2. **Shortest Path Computation**: Implements Dijkstra's algorithm to find the shortest path in terms of miles between two airports.
-3. **Result Storage**: Creates a class that stores the results of a shortest path search, including:
+1. **Graph Data Handling**: Reads airport and flight data from a user-specified DOT file and constructs a graph representation using `GraphADT`.
+2. **Shortest Path Computation**: Utilizes Dijkstra's algorithm to determine the shortest path in miles between two airports.
+3. **Result Storage**: Implements a class (`ShortestPathResult`) that stores the shortest path results, including:
    - The route as a list of airports.
    - The distance for each segment along the route.
-   - The total miles for the route.
-4. **Statistics Retrieval**: Provides methods for accessing dataset statistics, including the number of airports, the number of flights, and the total miles of all flights.
+   - The total distance for the route.
+4. **Statistics Retrieval**: Provides methods to retrieve dataset statistics, such as the number of airports, flights, and the total mileage.
 
-#### Interface Design
+#### Core Backend Files
 
-- **Result Interface**: Provides getter methods for accessing the route, segment distances, and total route miles.
-- **Backend Interface**: Provides methods for:
-  - Reading data from a file.
-  - Finding the shortest route between two airports.
-  - Retrieving dataset statistics (number of airports, flights, and total miles).
-
-#### Code and Placeholder Responsibilities
-
-- Fully implement both interfaces, adhering to the specifications.
-- Create a placeholder class for `GraphADT` to enable testing and allow the backend classes to function independently.
+- **`Backend.java`**: Implements backend functionalities for reading data, calculating shortest paths, and retrieving dataset statistics.
+- **`BackendInterface.java`**: Defines the interface for backend operations, specifying methods for data loading, route finding, and statistics retrieval.
+- **`DijkstraGraph.java`**: Implements Dijkstra's algorithm for finding the shortest path between nodes (airports) in the graph.
+- **`ShortestPathResult.java`**: Stores the results of a shortest path search, providing access to the route, segment distances, and total route distance.
+- **`ShortestPathResultInterface.java`**: Interface defining methods for retrieving details from `ShortestPathResult`.
+- **`GraphADT.java`**: Abstract Data Type defining the structure and operations of the graph, representing airports and flights.
+- **`BaseGraph.java`**: Base implementation of the graph structure, providing foundational methods for node and edge management.
+- **`City.java`**: Represents an individual airport node within the graph, storing information about each airport.
+- **`Flight.java`**: Represents individual flights, including details like distance and connecting airports.
 
 #### Presentation Responsibilities
 
-After integration, demonstrate the functionality by searching for the shortest route between two airports (e.g., ATL to SFO), showing the miles for each segment and the total miles.
+After integration, the backend developer demonstrates the shortest route calculation between airports, displaying each segment and the total distance.
 
 ---
 
 ### Frontend Developer Role
 
-The **Frontend Developer** is responsible for building the interactive user interface, handling commands, and presenting results from the backend to the user.
+The **Frontend Developer** builds the interactive user interface, which facilitates command-based interactions between the user and the backend.
 
 #### Responsibilities
 
-1. **Interactive Command Loop**: Prompts the user to select actions and collects required inputs.
+1. **Command Loop**: Prompts the user to select actions and collects required inputs for each command.
 2. **Command Implementations**:
-   - **Load Data File**: Allows the user to specify and load a dataset.
-   - **Show Dataset Statistics**: Displays the number of airports, flights, and the total miles in the dataset.
-   - **Shortest Route Search**: Prompts the user for start and destination airports, displays the shortest route, segment distances, and total miles.
-   - **Exit**: Closes the application.
+   - **Load Data File**: Allows the user to load a DOT file containing airport and flight data.
+   - **Show Dataset Statistics**: Displays the number of airports, flights, and cumulative mileage.
+   - **Shortest Route Search**: Collects start and destination airports from the user and displays the shortest route with segment distances.
+   - **Exit**: Exits the application.
 
-#### Interface Design
+#### Core Frontend Files
 
-- **Frontend Interface**: Contains a main command loop with separate methods for each command. The constructor accepts a backend instance and a `Scanner` for user input.
-
-#### Code and Placeholder Responsibilities
-
-- Fully implement the frontend interface according to the project specifications.
-- Create a placeholder class for the `BackendInterface` to allow the frontend to be tested independently.
-
-#### Presentation Responsibilities
-
-After integration, demonstrate the app by loading a dataset and displaying statistics, such as the number of airports, flights, and total miles.
+- **`Frontend.java`**: Manages the command-line interface and coordinates with the backend to display results to the user.
+- **`FrontendInterface.java`**: Defines the interface for frontend operations, specifying methods for each command.
+- **`TextUITester.java`**: Contains tests for the text-based user interface.
+- **`FrontendDeveloperTests.java`**: Contains test cases to verify frontend functionality.
 
 ---
 
 ## 🚀 Running the Application
 
-1. **Clone the Repository**:
+1. Compile the Code:
+
    ```bash
-   git clone https://github.com/yourusername/flight-router.git
-   cd flight-router
+   javac *.java
+   
+2. Run the Application:
+
+   ```bash
+   java Main
+   
+3. Commands:
+   - **Load Data**: Specify a DOT file to load airport and flight data.
+   - **View Dataset Statistics**: Display the number of airports, flights, and total mileage.
+   - **Find Shortest Route**: Enter a start and destination airport to view the shortest route and segment distances.
+   - **Exit**: Close the application.
+
+---
+
+## 📝 Example Usage
+
+- **Load a Data File**:  
+  Input: `data/flights.dot`
+
+- **View Dataset Statistics**:  
+  Output: `Airports: 50, Flights: 200, Total Miles: 25,000`
+
+- **Find Shortest Route**:  
+  Input: Start: `ATL`, Destination: `SFO`  
+  Output:
+  ```plaintext
+  Route: ATL -> DFW -> PHX -> SFO
+  Distances: 760 miles, 870 miles, 650 miles
+  Total Distance: 2,280 miles
+- **Exit the Application**
+
+---
+
+## 🔧 Technologies Used
+
+- **Java**: Primary programming language.
+- **Dijkstra's Algorithm**: Core algorithm for finding shortest paths.
+- **Graph Data Structure**: Represents airports and flights within the application.
+
+---
+
+## 🏆 Key Contributions
+
+As the **Backend Developer**, my contributions include:
+
+- Implementing data parsing and graph loading functionalities.
+- Designing and implementing shortest path algorithms for route finding.
+- Creating interfaces and classes to store and retrieve shortest path results.
+- Integrating backend functionality with the frontend for seamless user interactions.
