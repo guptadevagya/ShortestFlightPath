@@ -23,7 +23,7 @@
 
 ## 🛠 Project Structure and Roles
 
-### Backend Developer Role (Your Role)
+### Backend Developer Role (My Role)
 
 The **Backend Developer** is responsible for implementing the core functionalities of the application, specifically related to data handling, graph construction, and shortest path computations. 
 
@@ -119,7 +119,6 @@ The **Frontend Developer** builds the interactive user interface, which facilita
 
 ## 🔧 Technologies Used
 
-- **Java**: Primary programming language.
 - **Dijkstra's Algorithm**: Core algorithm for finding shortest paths.
 - **Graph Data Structure**: Represents airports and flights within the application.
 
