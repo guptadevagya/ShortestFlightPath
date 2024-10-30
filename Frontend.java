@@ -1,11 +1,3 @@
-
-// --== CS400 File Header Information ==--
-// Name: Will Foster
-// Email: wjfoster2@wisc.edu
-// Group and Team: F10
-// Group TA: Anvay Grover
-// Lecturer: Gary
-// Notes to Grader: <optional extra notes>
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;

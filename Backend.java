@@ -1,11 +1,3 @@
-// --== CS400 File Header Information ==--
-// Name: Devagya Gupta
-// Email: dgupta52@wisc.edu
-// Group and Team: Flight: F10
-// Group TA: ANVAY GROVER
-// Lecturer: Gary Dahl
-// Notes to Grader: <optional extra notes>
-
 // Importing necessary libraries
 import java.io.BufferedReader;
 import java.io.FileReader;
