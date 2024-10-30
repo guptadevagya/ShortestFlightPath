@@ -100,13 +100,14 @@ The **Frontend Developer** builds the interactive user interface, which facilita
 ## 📝 Example Usage
 
 - **Load a Data File**:  
-  Input: `data/flights.dot`
+  Input: `flights.dot`
 
 - **View Dataset Statistics**:  
   Output: `Airports: 50, Flights: 200, Total Miles: 25,000`
 
 - **Find Shortest Route**:  
-  Input: Start: `ATL`, Destination: `SFO`  
+  Input: Start: `ATL`, Destination: `SFO`
+   
   Output:
   ```plaintext
   Route: ATL -> DFW -> PHX -> SFO
